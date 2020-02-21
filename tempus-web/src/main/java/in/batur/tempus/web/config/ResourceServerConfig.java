@@ -6,10 +6,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
 import org.springframework.security.oauth2.provider.authentication.OAuth2AuthenticationDetails;
+import org.springframework.security.web.access.channel.ChannelProcessingFilter;
 
 /**
  * The @EnableResourceServer annotation adds a filter of type
@@ -37,6 +39,9 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter
 			.permitAll()
 			.anyRequest()
 			.authenticated();
+		http.addFilterBefore(new CorsFilter(), ChannelProcessingFilter.class);
+		http.addFilterAfter(new CorsFilter(), ChannelProcessingFilter.class);
+		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.NEVER);
 	}
 
 	@SuppressWarnings("unchecked")
