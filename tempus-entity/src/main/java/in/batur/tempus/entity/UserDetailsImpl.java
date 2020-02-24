@@ -11,6 +11,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 public class UserDetailsImpl implements UserDetails
 {
 	private static final long serialVersionUID = 1L;
+	private int id;
 	private String username;
 	private String password;
 	private boolean enabled;
@@ -26,6 +27,7 @@ public class UserDetailsImpl implements UserDetails
 	
 	public UserDetailsImpl(User user) 
 	{
+		this.id = user.getId();
 		this.username = user.getUsername();
 		this.password = user.getPassword();
 		this.enabled = user.isEnabled();
@@ -72,5 +74,41 @@ public class UserDetailsImpl implements UserDetails
 	@Override
 	public boolean isEnabled() {
 		return enabled;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
+
+	public void setAuthorities(List<GrantedAuthority> authorities) {
+		this.authorities = authorities;
+	}
+
+	public void setAccountNonExpired(boolean accountNonExpired) {
+		this.accountNonExpired = accountNonExpired;
+	}
+
+	public void setAccountNonLocked(boolean accountNonLocked) {
+		this.accountNonLocked = accountNonLocked;
+	}
+
+	public void setCredentialsNonExpired(boolean credentialsNonExpired) {
+		this.credentialsNonExpired = credentialsNonExpired;
 	}
 }

@@ -35,6 +35,8 @@ public class User
 	private boolean accountNonLocked;
 	private boolean credentialsNonExpired;
 	private String email;
+	private String name;
+	private String lastName;
 	@OneToMany(fetch = FetchType.EAGER)
 	@JoinTable
 	private Set<Role> roles;

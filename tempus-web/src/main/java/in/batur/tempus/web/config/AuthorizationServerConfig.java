@@ -110,7 +110,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
 		clients.inMemory().withClient("tempus-trusted-client").authorizedGrantTypes("client_credentials", "password")
 				.authorities("ROLE_CLIENT", "ROLE_TRUSTED_CLIENT").scopes("read", "write", "trust")
-				.resourceIds("oauth2-resource").accessTokenValiditySeconds(5000)
+				.resourceIds("oauth2-resource").accessTokenValiditySeconds(500000)
 				.secret(passwordEncoder.encode("tempussecretkey"));
 	}
 
