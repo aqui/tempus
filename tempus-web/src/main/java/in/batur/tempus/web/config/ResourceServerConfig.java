@@ -35,7 +35,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter
 			.csrf()
 			.disable()
 			.authorizeRequests()
-			.antMatchers("/oauth/token", "/swagger-resources/**", "/v2/api-docs", "/h2-console/**")
+			.antMatchers("/oauth/token", "/swagger-resources/**", "/v2/api-docs", "/h2-console/**", "/tempus-front-files/**")
 			.permitAll()
 			.anyRequest()
 			.authenticated();
