@@ -1,5 +1,8 @@
 package in.batur.tempus.entity;
 
-public class Authority {
+import java.io.Serializable;
 
+public class Authority extends BaseEntity implements Serializable
+{
+	private static final long serialVersionUID = 1L;
 }

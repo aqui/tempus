@@ -1,8 +1,8 @@
 package in.batur.tempus.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -18,11 +18,10 @@ import lombok.ToString;
 @Setter
 @ToString
 @Table(name = "company")
-public class Company
+public class Company extends BaseEntity implements Serializable
 {
-	@Id
-	@GeneratedValue
-	private int id;
+	private static final long serialVersionUID = 1L;
+	
 	private String report;
 	private String logo;
 }

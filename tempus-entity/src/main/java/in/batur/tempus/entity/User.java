@@ -1,11 +1,10 @@
 package in.batur.tempus.entity;
 
+import java.io.Serializable;
 import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -23,11 +22,9 @@ import lombok.ToString;
 @Setter
 @ToString
 @Table(name = "user")
-public class User
+public class User extends BaseEntity implements Serializable
 {
-	@Id
-	@GeneratedValue
-	private int id;
+	private static final long serialVersionUID = 1L;
 	private String username;
 	private String password;
 	private boolean enabled;

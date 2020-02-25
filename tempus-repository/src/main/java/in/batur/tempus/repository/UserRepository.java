@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import in.batur.tempus.entity.User;
 
 @Repository
-public interface UserRepository extends PagingAndSortingRepository<User, Integer>
+public interface UserRepository extends PagingAndSortingRepository<User, Long>
 {
 	Optional<User> findByUsername(String username);
 }

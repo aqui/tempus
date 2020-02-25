@@ -1,5 +1,8 @@
 package in.batur.tempus.entity;
 
-public class Product {
+import java.io.Serializable;
 
+public class Product extends BaseEntity implements Serializable
+{
+	private static final long serialVersionUID = 1L;
 }
