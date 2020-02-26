@@ -1,8 +1,14 @@
 package in.batur.tempus.entity;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -22,4 +28,9 @@ public class Role extends BaseEntity implements Serializable
 {
 	private static final long serialVersionUID = 1L;
 	private String roleName;
+	@ManyToMany(mappedBy = "roles")
+	private Set<User> users = new HashSet<>();
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "role_authority", joinColumns = @JoinColumn(name = "role_id"), inverseJoinColumns = @JoinColumn(name = "authority_id"))
+	private Set<Authority> authorities = new HashSet<>();
 }

@@ -4,6 +4,6 @@ INSERT INTO role(id, role_name) VALUES (1, 'ROLE_USER');
 	
 INSERT INTO role(id, role_name) VALUES (2, 'ROLE_ADMIN');
 
-INSERT INTO user_roles(user_id, roles_id) VALUES (1, 1);
+INSERT INTO user_role(user_id, role_id) VALUES (1, 1);
 
-INSERT INTO user_roles(user_id, roles_id) VALUES (1, 2);
+INSERT INTO user_role(user_id, role_id) VALUES (1, 2);

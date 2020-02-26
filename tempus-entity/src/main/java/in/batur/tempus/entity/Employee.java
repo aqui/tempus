@@ -21,7 +21,6 @@ import lombok.ToString;
 public class Employee extends BaseEntity implements Serializable
 {
 	private static final long serialVersionUID = 1L;
-	
 	private String trIdentity;
 	private String name;
 	private String lastname;
