@@ -17,9 +17,10 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-@Table(name = "work_template")
-public class WorkTemplate extends BaseEntity implements Serializable
+@Table(name = "shift_type")
+public class ShiftType extends BaseEntity implements Serializable
 {
 	private static final long serialVersionUID = 1L;
+	private String name;
 	private String description;
 }
