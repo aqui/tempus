@@ -7,6 +7,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -29,4 +30,6 @@ public class Department extends BaseEntity implements Serializable
 	private String departmentDescription;
 	@OneToMany(mappedBy = "department", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Line> lines = new ArrayList<>();
+	@OneToOne
+	private WorkHourTemplate workHourTemplate;
 }

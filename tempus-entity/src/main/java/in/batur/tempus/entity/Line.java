@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -33,4 +34,6 @@ public class Line extends BaseEntity implements Serializable
     private Department department;
 	@OneToMany(mappedBy = "line", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Station> stations = new ArrayList<>();
+	@OneToOne
+	private WorkHourTemplate workHourTemplate;
 }
