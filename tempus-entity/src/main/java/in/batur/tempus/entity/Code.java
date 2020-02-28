@@ -23,8 +23,8 @@ import lombok.ToString;
 public class Code extends BaseEntity implements Serializable
 {
 	private static final long serialVersionUID = 1L;
-	private String parameter;
-	private String parameterDescription;
+	private String codeCode;
+	private String codeDescription;
 	private boolean active;
 	@ManyToOne(fetch = FetchType.LAZY)
     private CodeTable codeTable;

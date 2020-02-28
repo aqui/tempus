@@ -21,6 +21,6 @@ import lombok.ToString;
 public class Protection extends BaseEntity implements Serializable
 {
 	private static final long serialVersionUID = 1L;
-	private String description;
-	private String picture;
+	private String protectionDescription;
+	private String protectionPicture;
 }

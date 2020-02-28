@@ -21,6 +21,6 @@ import lombok.ToString;
 public class Company extends BaseEntity implements Serializable
 {
 	private static final long serialVersionUID = 1L;
-	private String report;
-	private String logo;
+	private String companyReport;
+	private String companyLogo;
 }

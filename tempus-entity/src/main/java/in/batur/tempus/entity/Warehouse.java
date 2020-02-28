@@ -22,7 +22,7 @@ import lombok.ToString;
 public class Warehouse extends BaseEntity implements Serializable
 {
 	private static final long serialVersionUID = 1L;
-	private String wareouseName;
+	private String wareouseCode;
 	private String warehouseDescription;
 	@ManyToOne(fetch = FetchType.LAZY)
     private Station station;

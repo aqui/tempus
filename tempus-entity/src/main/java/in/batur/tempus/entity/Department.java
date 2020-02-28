@@ -26,7 +26,7 @@ import lombok.ToString;
 public class Department extends BaseEntity implements Serializable
 {
 	private static final long serialVersionUID = 1L;
-	private String departmentName;
+	private String departmentCode;
 	private String departmentDescription;
 	@OneToMany(mappedBy = "department", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Line> lines = new ArrayList<>();

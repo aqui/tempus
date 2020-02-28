@@ -28,7 +28,7 @@ import lombok.ToString;
 public class Station extends BaseEntity implements Serializable
 {
 	private static final long serialVersionUID = 1L;
-	private String stationName;
+	private String stationCode;
 	private String stationDescription;
 	@ManyToOne(fetch = FetchType.LAZY)
     private Line line;

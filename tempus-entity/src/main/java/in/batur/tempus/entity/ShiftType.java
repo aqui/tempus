@@ -21,6 +21,6 @@ import lombok.ToString;
 public class ShiftType extends BaseEntity implements Serializable
 {
 	private static final long serialVersionUID = 1L;
-	private String name;
-	private String description;
+	private String shiftTypeCode;
+	private String shiftTypeDescription;
 }

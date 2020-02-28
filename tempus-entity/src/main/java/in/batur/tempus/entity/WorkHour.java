@@ -27,7 +27,7 @@ import lombok.ToString;
 public class WorkHour extends BaseEntity implements Serializable
 {
 	private static final long serialVersionUID = 1L;
-	private String description;
+	private String workHoudDescription;
 	@ManyToOne(fetch = FetchType.LAZY)
     private WorkHourTemplate workHourTemplate;
 	@OneToMany(mappedBy = "workHour", cascade = CascadeType.ALL, orphanRemoval = true)

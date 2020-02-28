@@ -25,8 +25,8 @@ import lombok.ToString;
 public class CodeTable extends BaseEntity implements Serializable
 {
 	private static final long serialVersionUID = 1L;
-	private String code;
-	private String description;
+	private String codeTableCode;
+	private String codeTableDescription;
 	private boolean systemParameter;
 	@OneToMany(mappedBy = "codeTable", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Code> codes = new ArrayList<>();

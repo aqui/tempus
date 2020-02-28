@@ -27,7 +27,7 @@ public class WorkHourTemplate extends BaseEntity implements Serializable
 {
 	private static final long serialVersionUID = 1L;
 	@Column(unique = true, nullable = false)
-	private String description;
+	private String workHourTemplateDescription;
 	@Column(columnDefinition = "boolean default false") 
 	private boolean active;
 	@OneToMany(mappedBy = "workHourTemplate", cascade = CascadeType.ALL, orphanRemoval = true)

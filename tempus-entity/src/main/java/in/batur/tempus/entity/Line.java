@@ -28,7 +28,7 @@ import lombok.ToString;
 public class Line extends BaseEntity implements Serializable
 {
 	private static final long serialVersionUID = 1L;
-	private String lineName;
+	private String lineCode;
 	private String lineDescription;
 	@ManyToOne(fetch = FetchType.LAZY)
     private Department department;
