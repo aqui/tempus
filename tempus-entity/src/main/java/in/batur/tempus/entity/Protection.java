@@ -22,5 +22,5 @@ public class Protection extends BaseEntity implements Serializable
 {
 	private static final long serialVersionUID = 1L;
 	private String protectionDescription;
-	private String protectionPicture;
+	private String protectionPicturePath;
 }

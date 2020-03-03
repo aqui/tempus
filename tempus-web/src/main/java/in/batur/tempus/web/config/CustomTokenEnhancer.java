@@ -11,7 +11,6 @@ import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.security.oauth2.provider.token.TokenEnhancer;
 
 import in.batur.tempus.entity.UserDetailsImpl;
-import in.batur.tempus.service.impl.UserServiceImpl;
 
 public class CustomTokenEnhancer implements TokenEnhancer 
 {

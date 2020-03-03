@@ -32,11 +32,13 @@ public class RestDataConfig implements RepositoryRestConfigurer
 	private void exposeIds(RepositoryRestConfiguration config) 
 	{
 		Set<EntityType<?>> entities = entityManager.getMetamodel().getEntities();
+		@SuppressWarnings("rawtypes")
 		List<Class> entityClasses = new ArrayList<>();
-		for (EntityType entityType : entities) 
+		for (@SuppressWarnings("rawtypes") EntityType entityType : entities) 
 		{
 			entityClasses.add(entityType.getJavaType());
 		}
+		@SuppressWarnings("rawtypes")
 		Class[] domainTypes = entityClasses.toArray(new Class[0]);
 		config.exposeIdsFor(domainTypes);
 	}

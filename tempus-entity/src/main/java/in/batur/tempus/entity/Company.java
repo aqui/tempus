@@ -23,4 +23,5 @@ public class Company extends BaseEntity implements Serializable
 	private static final long serialVersionUID = 1L;
 	private String companyReport;
 	private String companyLogo;
+	private String companyName;
 }
