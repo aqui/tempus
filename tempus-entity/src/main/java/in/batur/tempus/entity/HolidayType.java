@@ -1,8 +1,6 @@
 package in.batur.tempus.entity;
 
 import java.io.Serializable;
-
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
@@ -22,6 +20,6 @@ import lombok.ToString;
 public class HolidayType extends BaseEntity implements Serializable
 {
 	private static final long serialVersionUID = 1L;
-	@Column(unique = true, nullable = false)
+	private String holidayTypeCode;
 	private String holidayTypeDescription;
 }

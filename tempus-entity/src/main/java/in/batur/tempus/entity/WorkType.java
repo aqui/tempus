@@ -21,5 +21,6 @@ import lombok.ToString;
 public class WorkType extends BaseEntity implements Serializable
 {
 	private static final long serialVersionUID = 1L;
+	private String workTypeCode;
 	private String workTypeDescription;
 }

@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -23,7 +24,7 @@ import lombok.ToString;
 public class Holiday extends BaseEntity implements Serializable
 {
 	private static final long serialVersionUID = 1L;
-	private Date date;
-	@OneToOne
+	private Date holidayDate;
+	@OneToOne(fetch = FetchType.EAGER)
 	private HolidayType holidayType;
 }
