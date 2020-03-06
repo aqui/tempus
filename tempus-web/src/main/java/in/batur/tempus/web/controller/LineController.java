@@ -16,51 +16,51 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import in.batur.tempus.entity.Holiday;
-import in.batur.tempus.service.HolidayService;
+import in.batur.tempus.entity.Line;
+import in.batur.tempus.service.LineService;
 import in.batur.tempus.web.exception.BaseEntityNotFoundException;
 
 @RestController
-@RequestMapping(value = "/api/holiday")
-public class HolidayController 
+@RequestMapping(value = "/api/line")
+public class LineController 
 {
-	Logger logger = LoggerFactory.getLogger(HolidayController.class);
+Logger logger = LoggerFactory.getLogger(LineController.class);
 	
 	@Autowired
-	private HolidayService holidayService;
+	private LineService lineService;
 	
 	@GetMapping
-	public List<Holiday> findAll()
+	public List<Line> findAll()
 	{
-		return holidayService.findAll();
+		return lineService.findAll();
 	}
 	
 	@GetMapping(path = "/{id}")
-	public Holiday getHolidayById(@PathVariable Long id) 
+	public Line getLineById(@PathVariable Long id) 
 	{
-		Holiday holiday = holidayService.findHolidayById(id);
-		if (holiday == null)
+		Line line = lineService.findLineById(id);
+		if (line == null)
 		{
 			throw new BaseEntityNotFoundException("id-" + id);
 		}
-		return holiday;
+		return line;
 	}
 	
 	@PostMapping
-	public Holiday saveHoliday(@Valid @RequestBody Holiday holiday) 
+	public Line saveLine(@Valid @RequestBody Line line) 
 	{
-		return holidayService.saveHoliday(holiday);
+		return lineService.saveLine(line);
 	}
 	
 	@PutMapping
-	public void updateHoliday(@Valid @RequestBody Holiday holiday) 
+	public void updateLine(@Valid @RequestBody Line line) 
 	{
-		holidayService.saveHoliday(holiday);
+		lineService.saveLine(line);
 	}
 
 	@DeleteMapping("/{id}")
-	public void deleteHoliday(@PathVariable Long id) 
+	public void deleteLine(@PathVariable Long id) 
 	{
-		holidayService.deleteHoliday(id);
+		lineService.deleteLine(id);
 	}
 }

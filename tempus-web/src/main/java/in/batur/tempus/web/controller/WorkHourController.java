@@ -16,51 +16,51 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import in.batur.tempus.entity.Holiday;
-import in.batur.tempus.service.HolidayService;
+import in.batur.tempus.entity.WorkHour;
+import in.batur.tempus.service.WorkHourService;
 import in.batur.tempus.web.exception.BaseEntityNotFoundException;
 
 @RestController
-@RequestMapping(value = "/api/holiday")
-public class HolidayController 
+@RequestMapping(value = "/api/workhour")
+public class WorkHourController 
 {
-	Logger logger = LoggerFactory.getLogger(HolidayController.class);
+Logger logger = LoggerFactory.getLogger(WorkHourController.class);
 	
 	@Autowired
-	private HolidayService holidayService;
+	private WorkHourService workHourService;
 	
 	@GetMapping
-	public List<Holiday> findAll()
+	public List<WorkHour> findAll()
 	{
-		return holidayService.findAll();
+		return workHourService.findAll();
 	}
 	
 	@GetMapping(path = "/{id}")
-	public Holiday getHolidayById(@PathVariable Long id) 
+	public WorkHour getWorkHourById(@PathVariable Long id) 
 	{
-		Holiday holiday = holidayService.findHolidayById(id);
-		if (holiday == null)
+		WorkHour workHour = workHourService.findWorkHourById(id);
+		if (workHour == null)
 		{
 			throw new BaseEntityNotFoundException("id-" + id);
 		}
-		return holiday;
+		return workHour;
 	}
 	
 	@PostMapping
-	public Holiday saveHoliday(@Valid @RequestBody Holiday holiday) 
+	public WorkHour saveWorkHour(@Valid @RequestBody WorkHour workHour) 
 	{
-		return holidayService.saveHoliday(holiday);
+		return workHourService.saveWorkHour(workHour);
 	}
 	
 	@PutMapping
-	public void updateHoliday(@Valid @RequestBody Holiday holiday) 
+	public void updateWorkHour(@Valid @RequestBody WorkHour workHour) 
 	{
-		holidayService.saveHoliday(holiday);
+		workHourService.saveWorkHour(workHour);
 	}
 
 	@DeleteMapping("/{id}")
-	public void deleteHoliday(@PathVariable Long id) 
+	public void deleteWorkHour(@PathVariable Long id) 
 	{
-		holidayService.deleteHoliday(id);
+		workHourService.deleteWorkHour(id);
 	}
 }

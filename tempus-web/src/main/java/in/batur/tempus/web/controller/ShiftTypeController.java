@@ -16,51 +16,51 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import in.batur.tempus.entity.Holiday;
-import in.batur.tempus.service.HolidayService;
+import in.batur.tempus.entity.ShiftType;
+import in.batur.tempus.service.ShiftTypeService;
 import in.batur.tempus.web.exception.BaseEntityNotFoundException;
 
 @RestController
-@RequestMapping(value = "/api/holiday")
-public class HolidayController 
+@RequestMapping(value = "/api/shifttype")
+public class ShiftTypeController 
 {
-	Logger logger = LoggerFactory.getLogger(HolidayController.class);
+Logger logger = LoggerFactory.getLogger(ShiftTypeController.class);
 	
 	@Autowired
-	private HolidayService holidayService;
+	private ShiftTypeService shiftTypeService;
 	
 	@GetMapping
-	public List<Holiday> findAll()
+	public List<ShiftType> findAll()
 	{
-		return holidayService.findAll();
+		return shiftTypeService.findAll();
 	}
 	
 	@GetMapping(path = "/{id}")
-	public Holiday getHolidayById(@PathVariable Long id) 
+	public ShiftType getShiftTypeById(@PathVariable Long id) 
 	{
-		Holiday holiday = holidayService.findHolidayById(id);
-		if (holiday == null)
+		ShiftType shiftType = shiftTypeService.findShiftTypeById(id);
+		if (shiftType == null)
 		{
 			throw new BaseEntityNotFoundException("id-" + id);
 		}
-		return holiday;
+		return shiftType;
 	}
 	
 	@PostMapping
-	public Holiday saveHoliday(@Valid @RequestBody Holiday holiday) 
+	public ShiftType saveShiftType(@Valid @RequestBody ShiftType shiftType) 
 	{
-		return holidayService.saveHoliday(holiday);
+		return shiftTypeService.saveShiftType(shiftType);
 	}
 	
 	@PutMapping
-	public void updateHoliday(@Valid @RequestBody Holiday holiday) 
+	public void updateShiftType(@Valid @RequestBody ShiftType shiftType) 
 	{
-		holidayService.saveHoliday(holiday);
+		shiftTypeService.saveShiftType(shiftType);
 	}
 
 	@DeleteMapping("/{id}")
-	public void deleteHoliday(@PathVariable Long id) 
+	public void deleteShiftType(@PathVariable Long id) 
 	{
-		holidayService.deleteHoliday(id);
+		shiftTypeService.deleteShiftType(id);
 	}
 }

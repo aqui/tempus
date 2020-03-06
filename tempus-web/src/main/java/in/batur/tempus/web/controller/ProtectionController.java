@@ -16,51 +16,51 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import in.batur.tempus.entity.Holiday;
-import in.batur.tempus.service.HolidayService;
+import in.batur.tempus.entity.Protection;
+import in.batur.tempus.service.ProtectionService;
 import in.batur.tempus.web.exception.BaseEntityNotFoundException;
 
 @RestController
-@RequestMapping(value = "/api/holiday")
-public class HolidayController 
+@RequestMapping(value = "/api/protection")
+public class ProtectionController 
 {
-	Logger logger = LoggerFactory.getLogger(HolidayController.class);
+Logger logger = LoggerFactory.getLogger(ProtectionController.class);
 	
 	@Autowired
-	private HolidayService holidayService;
+	private ProtectionService protectionService;
 	
 	@GetMapping
-	public List<Holiday> findAll()
+	public List<Protection> findAll()
 	{
-		return holidayService.findAll();
+		return protectionService.findAll();
 	}
 	
 	@GetMapping(path = "/{id}")
-	public Holiday getHolidayById(@PathVariable Long id) 
+	public Protection getProtectionById(@PathVariable Long id) 
 	{
-		Holiday holiday = holidayService.findHolidayById(id);
-		if (holiday == null)
+		Protection protection = protectionService.findProtectionById(id);
+		if (protection == null)
 		{
 			throw new BaseEntityNotFoundException("id-" + id);
 		}
-		return holiday;
+		return protection;
 	}
 	
 	@PostMapping
-	public Holiday saveHoliday(@Valid @RequestBody Holiday holiday) 
+	public Protection saveProtection(@Valid @RequestBody Protection protection) 
 	{
-		return holidayService.saveHoliday(holiday);
+		return protectionService.saveProtection(protection);
 	}
 	
 	@PutMapping
-	public void updateHoliday(@Valid @RequestBody Holiday holiday) 
+	public void updateProtection(@Valid @RequestBody Protection protection) 
 	{
-		holidayService.saveHoliday(holiday);
+		protectionService.saveProtection(protection);
 	}
 
 	@DeleteMapping("/{id}")
-	public void deleteHoliday(@PathVariable Long id) 
+	public void deleteProtection(@PathVariable Long id) 
 	{
-		holidayService.deleteHoliday(id);
+		protectionService.deleteProtection(id);
 	}
 }

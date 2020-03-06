@@ -16,51 +16,51 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import in.batur.tempus.entity.Holiday;
-import in.batur.tempus.service.HolidayService;
+import in.batur.tempus.entity.Employee;
+import in.batur.tempus.service.EmployeeService;
 import in.batur.tempus.web.exception.BaseEntityNotFoundException;
 
 @RestController
-@RequestMapping(value = "/api/holiday")
-public class HolidayController 
+@RequestMapping(value = "/api/employee")
+public class EmployeeController 
 {
-	Logger logger = LoggerFactory.getLogger(HolidayController.class);
+Logger logger = LoggerFactory.getLogger(EmployeeController.class);
 	
 	@Autowired
-	private HolidayService holidayService;
+	private EmployeeService employeeService;
 	
 	@GetMapping
-	public List<Holiday> findAll()
+	public List<Employee> findAll()
 	{
-		return holidayService.findAll();
+		return employeeService.findAll();
 	}
 	
 	@GetMapping(path = "/{id}")
-	public Holiday getHolidayById(@PathVariable Long id) 
+	public Employee getEmployeeById(@PathVariable Long id) 
 	{
-		Holiday holiday = holidayService.findHolidayById(id);
-		if (holiday == null)
+		Employee employee = employeeService.findEmployeeById(id);
+		if (employee == null)
 		{
 			throw new BaseEntityNotFoundException("id-" + id);
 		}
-		return holiday;
+		return employee;
 	}
 	
 	@PostMapping
-	public Holiday saveHoliday(@Valid @RequestBody Holiday holiday) 
+	public Employee saveEmployee(@Valid @RequestBody Employee employee) 
 	{
-		return holidayService.saveHoliday(holiday);
+		return employeeService.saveEmployee(employee);
 	}
 	
 	@PutMapping
-	public void updateHoliday(@Valid @RequestBody Holiday holiday) 
+	public void updateEmployee(@Valid @RequestBody Employee employee) 
 	{
-		holidayService.saveHoliday(holiday);
+		employeeService.saveEmployee(employee);
 	}
 
 	@DeleteMapping("/{id}")
-	public void deleteHoliday(@PathVariable Long id) 
+	public void deleteEmployee(@PathVariable Long id) 
 	{
-		holidayService.deleteHoliday(id);
+		employeeService.deleteEmployee(id);
 	}
 }

@@ -16,51 +16,51 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import in.batur.tempus.entity.Holiday;
-import in.batur.tempus.service.HolidayService;
+import in.batur.tempus.entity.User;
+import in.batur.tempus.service.UserService;
 import in.batur.tempus.web.exception.BaseEntityNotFoundException;
 
 @RestController
-@RequestMapping(value = "/api/holiday")
-public class HolidayController 
+@RequestMapping(value = "/api/user")
+public class UserController 
 {
-	Logger logger = LoggerFactory.getLogger(HolidayController.class);
+Logger logger = LoggerFactory.getLogger(UserController.class);
 	
 	@Autowired
-	private HolidayService holidayService;
+	private UserService userService;
 	
 	@GetMapping
-	public List<Holiday> findAll()
+	public List<User> findAll()
 	{
-		return holidayService.findAll();
+		return userService.findAll();
 	}
 	
 	@GetMapping(path = "/{id}")
-	public Holiday getHolidayById(@PathVariable Long id) 
+	public User getUserById(@PathVariable Long id) 
 	{
-		Holiday holiday = holidayService.findHolidayById(id);
-		if (holiday == null)
+		User user = userService.findUserById(id);
+		if (user == null)
 		{
 			throw new BaseEntityNotFoundException("id-" + id);
 		}
-		return holiday;
+		return user;
 	}
 	
 	@PostMapping
-	public Holiday saveHoliday(@Valid @RequestBody Holiday holiday) 
+	public User saveUser(@Valid @RequestBody User user) 
 	{
-		return holidayService.saveHoliday(holiday);
+		return userService.saveUser(user);
 	}
 	
 	@PutMapping
-	public void updateHoliday(@Valid @RequestBody Holiday holiday) 
+	public void updateUser(@Valid @RequestBody User user) 
 	{
-		holidayService.saveHoliday(holiday);
+		userService.saveUser(user);
 	}
 
 	@DeleteMapping("/{id}")
-	public void deleteHoliday(@PathVariable Long id) 
+	public void deleteUser(@PathVariable Long id) 
 	{
-		holidayService.deleteHoliday(id);
+		userService.deleteUser(id);
 	}
 }

@@ -16,51 +16,51 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import in.batur.tempus.entity.Holiday;
-import in.batur.tempus.service.HolidayService;
+import in.batur.tempus.entity.Equipment;
+import in.batur.tempus.service.EquipmentService;
 import in.batur.tempus.web.exception.BaseEntityNotFoundException;
 
 @RestController
-@RequestMapping(value = "/api/holiday")
-public class HolidayController 
+@RequestMapping(value = "/api/equipment")
+public class EquipmentController 
 {
-	Logger logger = LoggerFactory.getLogger(HolidayController.class);
+Logger logger = LoggerFactory.getLogger(EquipmentController.class);
 	
 	@Autowired
-	private HolidayService holidayService;
+	private EquipmentService equipmentService;
 	
 	@GetMapping
-	public List<Holiday> findAll()
+	public List<Equipment> findAll()
 	{
-		return holidayService.findAll();
+		return equipmentService.findAll();
 	}
 	
 	@GetMapping(path = "/{id}")
-	public Holiday getHolidayById(@PathVariable Long id) 
+	public Equipment getEquipmentById(@PathVariable Long id) 
 	{
-		Holiday holiday = holidayService.findHolidayById(id);
-		if (holiday == null)
+		Equipment equipment = equipmentService.findEquipmentById(id);
+		if (equipment == null)
 		{
 			throw new BaseEntityNotFoundException("id-" + id);
 		}
-		return holiday;
+		return equipment;
 	}
 	
 	@PostMapping
-	public Holiday saveHoliday(@Valid @RequestBody Holiday holiday) 
+	public Equipment saveEquipment(@Valid @RequestBody Equipment equipment) 
 	{
-		return holidayService.saveHoliday(holiday);
+		return equipmentService.saveEquipment(equipment);
 	}
 	
 	@PutMapping
-	public void updateHoliday(@Valid @RequestBody Holiday holiday) 
+	public void updateEquipment(@Valid @RequestBody Equipment equipment) 
 	{
-		holidayService.saveHoliday(holiday);
+		equipmentService.saveEquipment(equipment);
 	}
 
 	@DeleteMapping("/{id}")
-	public void deleteHoliday(@PathVariable Long id) 
+	public void deleteEquipment(@PathVariable Long id) 
 	{
-		holidayService.deleteHoliday(id);
+		equipmentService.deleteEquipment(id);
 	}
 }

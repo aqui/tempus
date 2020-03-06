@@ -16,51 +16,51 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import in.batur.tempus.entity.Holiday;
-import in.batur.tempus.service.HolidayService;
+import in.batur.tempus.entity.Station;
+import in.batur.tempus.service.StationService;
 import in.batur.tempus.web.exception.BaseEntityNotFoundException;
 
 @RestController
-@RequestMapping(value = "/api/holiday")
-public class HolidayController 
+@RequestMapping(value = "/api/station")
+public class StationController 
 {
-	Logger logger = LoggerFactory.getLogger(HolidayController.class);
+Logger logger = LoggerFactory.getLogger(StationController.class);
 	
 	@Autowired
-	private HolidayService holidayService;
+	private StationService stationService;
 	
 	@GetMapping
-	public List<Holiday> findAll()
+	public List<Station> findAll()
 	{
-		return holidayService.findAll();
+		return stationService.findAll();
 	}
 	
 	@GetMapping(path = "/{id}")
-	public Holiday getHolidayById(@PathVariable Long id) 
+	public Station getStationById(@PathVariable Long id) 
 	{
-		Holiday holiday = holidayService.findHolidayById(id);
-		if (holiday == null)
+		Station station = stationService.findStationById(id);
+		if (station == null)
 		{
 			throw new BaseEntityNotFoundException("id-" + id);
 		}
-		return holiday;
+		return station;
 	}
 	
 	@PostMapping
-	public Holiday saveHoliday(@Valid @RequestBody Holiday holiday) 
+	public Station saveStation(@Valid @RequestBody Station station) 
 	{
-		return holidayService.saveHoliday(holiday);
+		return stationService.saveStation(station);
 	}
 	
 	@PutMapping
-	public void updateHoliday(@Valid @RequestBody Holiday holiday) 
+	public void updateStation(@Valid @RequestBody Station station) 
 	{
-		holidayService.saveHoliday(holiday);
+		stationService.saveStation(station);
 	}
 
 	@DeleteMapping("/{id}")
-	public void deleteHoliday(@PathVariable Long id) 
+	public void deleteStation(@PathVariable Long id) 
 	{
-		holidayService.deleteHoliday(id);
+		stationService.deleteStation(id);
 	}
 }

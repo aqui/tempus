@@ -16,29 +16,29 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import in.batur.tempus.entity.Holiday;
-import in.batur.tempus.service.HolidayService;
+import in.batur.tempus.entity.Department;
+import in.batur.tempus.service.DepartmentService;
 import in.batur.tempus.web.exception.BaseEntityNotFoundException;
 
 @RestController
-@RequestMapping(value = "/api/holiday")
-public class HolidayController 
+@RequestMapping(value = "/api/department")
+public class DepartmentController 
 {
-	Logger logger = LoggerFactory.getLogger(HolidayController.class);
+Logger logger = LoggerFactory.getLogger(DepartmentController.class);
 	
 	@Autowired
-	private HolidayService holidayService;
+	private DepartmentService holidayService;
 	
 	@GetMapping
-	public List<Holiday> findAll()
+	public List<Department> findAll()
 	{
 		return holidayService.findAll();
 	}
 	
 	@GetMapping(path = "/{id}")
-	public Holiday getHolidayById(@PathVariable Long id) 
+	public Department getDepartmentById(@PathVariable Long id) 
 	{
-		Holiday holiday = holidayService.findHolidayById(id);
+		Department holiday = holidayService.findDepartmentById(id);
 		if (holiday == null)
 		{
 			throw new BaseEntityNotFoundException("id-" + id);
@@ -47,20 +47,20 @@ public class HolidayController
 	}
 	
 	@PostMapping
-	public Holiday saveHoliday(@Valid @RequestBody Holiday holiday) 
+	public Department saveDepartment(@Valid @RequestBody Department holiday) 
 	{
-		return holidayService.saveHoliday(holiday);
+		return holidayService.saveDepartment(holiday);
 	}
 	
 	@PutMapping
-	public void updateHoliday(@Valid @RequestBody Holiday holiday) 
+	public void updateDepartment(@Valid @RequestBody Department holiday) 
 	{
-		holidayService.saveHoliday(holiday);
+		holidayService.saveDepartment(holiday);
 	}
 
 	@DeleteMapping("/{id}")
-	public void deleteHoliday(@PathVariable Long id) 
+	public void deleteDepartment(@PathVariable Long id) 
 	{
-		holidayService.deleteHoliday(id);
+		holidayService.deleteDepartment(id);
 	}
 }

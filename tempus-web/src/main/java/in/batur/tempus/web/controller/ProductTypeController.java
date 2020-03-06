@@ -16,51 +16,51 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import in.batur.tempus.entity.Holiday;
-import in.batur.tempus.service.HolidayService;
+import in.batur.tempus.entity.ProductType;
+import in.batur.tempus.service.ProductTypeService;
 import in.batur.tempus.web.exception.BaseEntityNotFoundException;
 
 @RestController
-@RequestMapping(value = "/api/holiday")
-public class HolidayController 
+@RequestMapping(value = "/api/producttype")
+public class ProductTypeController 
 {
-	Logger logger = LoggerFactory.getLogger(HolidayController.class);
+Logger logger = LoggerFactory.getLogger(ProductTypeController.class);
 	
 	@Autowired
-	private HolidayService holidayService;
+	private ProductTypeService productTypeService;
 	
 	@GetMapping
-	public List<Holiday> findAll()
+	public List<ProductType> findAll()
 	{
-		return holidayService.findAll();
+		return productTypeService.findAll();
 	}
 	
 	@GetMapping(path = "/{id}")
-	public Holiday getHolidayById(@PathVariable Long id) 
+	public ProductType getProductTypeById(@PathVariable Long id) 
 	{
-		Holiday holiday = holidayService.findHolidayById(id);
-		if (holiday == null)
+		ProductType productType = productTypeService.findProductTypeById(id);
+		if (productType == null)
 		{
 			throw new BaseEntityNotFoundException("id-" + id);
 		}
-		return holiday;
+		return productType;
 	}
 	
 	@PostMapping
-	public Holiday saveHoliday(@Valid @RequestBody Holiday holiday) 
+	public ProductType saveProductType(@Valid @RequestBody ProductType productType) 
 	{
-		return holidayService.saveHoliday(holiday);
+		return productTypeService.saveProductType(productType);
 	}
 	
 	@PutMapping
-	public void updateHoliday(@Valid @RequestBody Holiday holiday) 
+	public void updateProductType(@Valid @RequestBody ProductType productType) 
 	{
-		holidayService.saveHoliday(holiday);
+		productTypeService.saveProductType(productType);
 	}
 
 	@DeleteMapping("/{id}")
-	public void deleteHoliday(@PathVariable Long id) 
+	public void deleteProductType(@PathVariable Long id) 
 	{
-		holidayService.deleteHoliday(id);
+		productTypeService.deleteProductType(id);
 	}
 }

@@ -16,51 +16,51 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import in.batur.tempus.entity.Holiday;
-import in.batur.tempus.service.HolidayService;
+import in.batur.tempus.entity.Product;
+import in.batur.tempus.service.ProductService;
 import in.batur.tempus.web.exception.BaseEntityNotFoundException;
 
 @RestController
-@RequestMapping(value = "/api/holiday")
-public class HolidayController 
+@RequestMapping(value = "/api/product")
+public class ProductController 
 {
-	Logger logger = LoggerFactory.getLogger(HolidayController.class);
+Logger logger = LoggerFactory.getLogger(ProductController.class);
 	
 	@Autowired
-	private HolidayService holidayService;
+	private ProductService productService;
 	
 	@GetMapping
-	public List<Holiday> findAll()
+	public List<Product> findAll()
 	{
-		return holidayService.findAll();
+		return productService.findAll();
 	}
 	
 	@GetMapping(path = "/{id}")
-	public Holiday getHolidayById(@PathVariable Long id) 
+	public Product getProductById(@PathVariable Long id) 
 	{
-		Holiday holiday = holidayService.findHolidayById(id);
-		if (holiday == null)
+		Product product = productService.findProductById(id);
+		if (product == null)
 		{
 			throw new BaseEntityNotFoundException("id-" + id);
 		}
-		return holiday;
+		return product;
 	}
 	
 	@PostMapping
-	public Holiday saveHoliday(@Valid @RequestBody Holiday holiday) 
+	public Product saveProduct(@Valid @RequestBody Product product) 
 	{
-		return holidayService.saveHoliday(holiday);
+		return productService.saveProduct(product);
 	}
 	
 	@PutMapping
-	public void updateHoliday(@Valid @RequestBody Holiday holiday) 
+	public void updateProduct(@Valid @RequestBody Product product) 
 	{
-		holidayService.saveHoliday(holiday);
+		productService.saveProduct(product);
 	}
 
 	@DeleteMapping("/{id}")
-	public void deleteHoliday(@PathVariable Long id) 
+	public void deleteProduct(@PathVariable Long id) 
 	{
-		holidayService.deleteHoliday(id);
+		productService.deleteProduct(id);
 	}
 }

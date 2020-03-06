@@ -16,51 +16,51 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import in.batur.tempus.entity.Holiday;
-import in.batur.tempus.service.HolidayService;
+import in.batur.tempus.entity.AnalysisType;
+import in.batur.tempus.service.AnalysisTypeService;
 import in.batur.tempus.web.exception.BaseEntityNotFoundException;
 
 @RestController
-@RequestMapping(value = "/api/holiday")
-public class HolidayController 
+@RequestMapping(value = "/api/analysistype")
+public class AnalysisTypeController 
 {
-	Logger logger = LoggerFactory.getLogger(HolidayController.class);
+Logger logger = LoggerFactory.getLogger(AnalysisTypeController.class);
 	
 	@Autowired
-	private HolidayService holidayService;
+	private AnalysisTypeService analysisTypeService;
 	
 	@GetMapping
-	public List<Holiday> findAll()
+	public List<AnalysisType> findAll()
 	{
-		return holidayService.findAll();
+		return analysisTypeService.findAll();
 	}
 	
 	@GetMapping(path = "/{id}")
-	public Holiday getHolidayById(@PathVariable Long id) 
+	public AnalysisType getAnalysisTypeById(@PathVariable Long id) 
 	{
-		Holiday holiday = holidayService.findHolidayById(id);
-		if (holiday == null)
+		AnalysisType analysisType = analysisTypeService.findAnalysisTypeById(id);
+		if (analysisType == null)
 		{
 			throw new BaseEntityNotFoundException("id-" + id);
 		}
-		return holiday;
+		return analysisType;
 	}
 	
 	@PostMapping
-	public Holiday saveHoliday(@Valid @RequestBody Holiday holiday) 
+	public AnalysisType saveAnalysisType(@Valid @RequestBody AnalysisType analysisType) 
 	{
-		return holidayService.saveHoliday(holiday);
+		return analysisTypeService.saveAnalysisType(analysisType);
 	}
 	
 	@PutMapping
-	public void updateHoliday(@Valid @RequestBody Holiday holiday) 
+	public void updateAnalysisType(@Valid @RequestBody AnalysisType analysisType) 
 	{
-		holidayService.saveHoliday(holiday);
+		analysisTypeService.saveAnalysisType(analysisType);
 	}
 
 	@DeleteMapping("/{id}")
-	public void deleteHoliday(@PathVariable Long id) 
+	public void deleteAnalysisType(@PathVariable Long id) 
 	{
-		holidayService.deleteHoliday(id);
+		analysisTypeService.deleteAnalysisType(id);
 	}
 }

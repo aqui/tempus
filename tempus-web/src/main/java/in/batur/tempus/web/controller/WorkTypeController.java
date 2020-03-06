@@ -16,51 +16,51 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import in.batur.tempus.entity.Holiday;
-import in.batur.tempus.service.HolidayService;
+import in.batur.tempus.entity.WorkType;
+import in.batur.tempus.service.WorkTypeService;
 import in.batur.tempus.web.exception.BaseEntityNotFoundException;
 
 @RestController
-@RequestMapping(value = "/api/holiday")
-public class HolidayController 
+@RequestMapping(value = "/api/worktype")
+public class WorkTypeController 
 {
-	Logger logger = LoggerFactory.getLogger(HolidayController.class);
+Logger logger = LoggerFactory.getLogger(WorkTypeController.class);
 	
 	@Autowired
-	private HolidayService holidayService;
+	private WorkTypeService workTypeService;
 	
 	@GetMapping
-	public List<Holiday> findAll()
+	public List<WorkType> findAll()
 	{
-		return holidayService.findAll();
+		return workTypeService.findAll();
 	}
 	
 	@GetMapping(path = "/{id}")
-	public Holiday getHolidayById(@PathVariable Long id) 
+	public WorkType getWorkTypeById(@PathVariable Long id) 
 	{
-		Holiday holiday = holidayService.findHolidayById(id);
-		if (holiday == null)
+		WorkType workType = workTypeService.findWorkTypeById(id);
+		if (workType == null)
 		{
 			throw new BaseEntityNotFoundException("id-" + id);
 		}
-		return holiday;
+		return workType;
 	}
 	
 	@PostMapping
-	public Holiday saveHoliday(@Valid @RequestBody Holiday holiday) 
+	public WorkType saveWorkType(@Valid @RequestBody WorkType workType) 
 	{
-		return holidayService.saveHoliday(holiday);
+		return workTypeService.saveWorkType(workType);
 	}
 	
 	@PutMapping
-	public void updateHoliday(@Valid @RequestBody Holiday holiday) 
+	public void updateWorkType(@Valid @RequestBody WorkType workType) 
 	{
-		holidayService.saveHoliday(holiday);
+		workTypeService.saveWorkType(workType);
 	}
 
 	@DeleteMapping("/{id}")
-	public void deleteHoliday(@PathVariable Long id) 
+	public void deleteWorkType(@PathVariable Long id) 
 	{
-		holidayService.deleteHoliday(id);
+		workTypeService.deleteWorkType(id);
 	}
 }

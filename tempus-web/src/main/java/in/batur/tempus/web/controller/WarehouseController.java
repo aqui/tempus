@@ -16,51 +16,51 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import in.batur.tempus.entity.Holiday;
-import in.batur.tempus.service.HolidayService;
+import in.batur.tempus.entity.Warehouse;
+import in.batur.tempus.service.WarehouseService;
 import in.batur.tempus.web.exception.BaseEntityNotFoundException;
 
 @RestController
-@RequestMapping(value = "/api/holiday")
-public class HolidayController 
+@RequestMapping(value = "/api/warehouse")
+public class WarehouseController 
 {
-	Logger logger = LoggerFactory.getLogger(HolidayController.class);
+Logger logger = LoggerFactory.getLogger(WarehouseController.class);
 	
 	@Autowired
-	private HolidayService holidayService;
+	private WarehouseService warehouseService;
 	
 	@GetMapping
-	public List<Holiday> findAll()
+	public List<Warehouse> findAll()
 	{
-		return holidayService.findAll();
+		return warehouseService.findAll();
 	}
 	
 	@GetMapping(path = "/{id}")
-	public Holiday getHolidayById(@PathVariable Long id) 
+	public Warehouse getWarehouseById(@PathVariable Long id) 
 	{
-		Holiday holiday = holidayService.findHolidayById(id);
-		if (holiday == null)
+		Warehouse warehouse = warehouseService.findWarehouseById(id);
+		if (warehouse == null)
 		{
 			throw new BaseEntityNotFoundException("id-" + id);
 		}
-		return holiday;
+		return warehouse;
 	}
 	
 	@PostMapping
-	public Holiday saveHoliday(@Valid @RequestBody Holiday holiday) 
+	public Warehouse saveWarehouse(@Valid @RequestBody Warehouse warehouse) 
 	{
-		return holidayService.saveHoliday(holiday);
+		return warehouseService.saveWarehouse(warehouse);
 	}
 	
 	@PutMapping
-	public void updateHoliday(@Valid @RequestBody Holiday holiday) 
+	public void updateWarehouse(@Valid @RequestBody Warehouse warehouse) 
 	{
-		holidayService.saveHoliday(holiday);
+		warehouseService.saveWarehouse(warehouse);
 	}
 
 	@DeleteMapping("/{id}")
-	public void deleteHoliday(@PathVariable Long id) 
+	public void deleteWarehouse(@PathVariable Long id) 
 	{
-		holidayService.deleteHoliday(id);
+		warehouseService.deleteWarehouse(id);
 	}
 }

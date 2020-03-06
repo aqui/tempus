@@ -16,51 +16,51 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import in.batur.tempus.entity.Holiday;
-import in.batur.tempus.service.HolidayService;
+import in.batur.tempus.entity.Shift;
+import in.batur.tempus.service.ShiftService;
 import in.batur.tempus.web.exception.BaseEntityNotFoundException;
 
 @RestController
-@RequestMapping(value = "/api/holiday")
-public class HolidayController 
+@RequestMapping(value = "/api/shift")
+public class ShiftController 
 {
-	Logger logger = LoggerFactory.getLogger(HolidayController.class);
+Logger logger = LoggerFactory.getLogger(ShiftController.class);
 	
 	@Autowired
-	private HolidayService holidayService;
+	private ShiftService shiftService;
 	
 	@GetMapping
-	public List<Holiday> findAll()
+	public List<Shift> findAll()
 	{
-		return holidayService.findAll();
+		return shiftService.findAll();
 	}
 	
 	@GetMapping(path = "/{id}")
-	public Holiday getHolidayById(@PathVariable Long id) 
+	public Shift getShiftById(@PathVariable Long id) 
 	{
-		Holiday holiday = holidayService.findHolidayById(id);
-		if (holiday == null)
+		Shift shift = shiftService.findShiftById(id);
+		if (shift == null)
 		{
 			throw new BaseEntityNotFoundException("id-" + id);
 		}
-		return holiday;
+		return shift;
 	}
 	
 	@PostMapping
-	public Holiday saveHoliday(@Valid @RequestBody Holiday holiday) 
+	public Shift saveShift(@Valid @RequestBody Shift shift) 
 	{
-		return holidayService.saveHoliday(holiday);
+		return shiftService.saveShift(shift);
 	}
 	
 	@PutMapping
-	public void updateHoliday(@Valid @RequestBody Holiday holiday) 
+	public void updateShift(@Valid @RequestBody Shift shift) 
 	{
-		holidayService.saveHoliday(holiday);
+		shiftService.saveShift(shift);
 	}
 
 	@DeleteMapping("/{id}")
-	public void deleteHoliday(@PathVariable Long id) 
+	public void deleteShift(@PathVariable Long id) 
 	{
-		holidayService.deleteHoliday(id);
+		shiftService.deleteShift(id);
 	}
 }

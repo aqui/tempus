@@ -16,29 +16,29 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import in.batur.tempus.entity.Holiday;
-import in.batur.tempus.service.HolidayService;
+import in.batur.tempus.entity.Operation;
+import in.batur.tempus.service.OperationService;
 import in.batur.tempus.web.exception.BaseEntityNotFoundException;
 
 @RestController
-@RequestMapping(value = "/api/holiday")
-public class HolidayController 
+@RequestMapping(value = "/api/operation")
+public class OperationController 
 {
-	Logger logger = LoggerFactory.getLogger(HolidayController.class);
+Logger logger = LoggerFactory.getLogger(OperationController.class);
 	
 	@Autowired
-	private HolidayService holidayService;
+	private OperationService holidayService;
 	
 	@GetMapping
-	public List<Holiday> findAll()
+	public List<Operation> findAll()
 	{
 		return holidayService.findAll();
 	}
 	
 	@GetMapping(path = "/{id}")
-	public Holiday getHolidayById(@PathVariable Long id) 
+	public Operation getOperationById(@PathVariable Long id) 
 	{
-		Holiday holiday = holidayService.findHolidayById(id);
+		Operation holiday = holidayService.findOperationById(id);
 		if (holiday == null)
 		{
 			throw new BaseEntityNotFoundException("id-" + id);
@@ -47,20 +47,20 @@ public class HolidayController
 	}
 	
 	@PostMapping
-	public Holiday saveHoliday(@Valid @RequestBody Holiday holiday) 
+	public Operation saveOperation(@Valid @RequestBody Operation holiday) 
 	{
-		return holidayService.saveHoliday(holiday);
+		return holidayService.saveOperation(holiday);
 	}
 	
 	@PutMapping
-	public void updateHoliday(@Valid @RequestBody Holiday holiday) 
+	public void updateOperation(@Valid @RequestBody Operation holiday) 
 	{
-		holidayService.saveHoliday(holiday);
+		holidayService.saveOperation(holiday);
 	}
 
 	@DeleteMapping("/{id}")
-	public void deleteHoliday(@PathVariable Long id) 
+	public void deleteOperation(@PathVariable Long id) 
 	{
-		holidayService.deleteHoliday(id);
+		holidayService.deleteOperation(id);
 	}
 }

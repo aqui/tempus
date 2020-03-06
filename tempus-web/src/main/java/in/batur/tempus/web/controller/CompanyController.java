@@ -16,51 +16,51 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import in.batur.tempus.entity.Holiday;
-import in.batur.tempus.service.HolidayService;
+import in.batur.tempus.entity.Company;
+import in.batur.tempus.service.CompanyService;
 import in.batur.tempus.web.exception.BaseEntityNotFoundException;
 
 @RestController
-@RequestMapping(value = "/api/holiday")
-public class HolidayController 
+@RequestMapping(value = "/api/company")
+public class CompanyController 
 {
-	Logger logger = LoggerFactory.getLogger(HolidayController.class);
+Logger logger = LoggerFactory.getLogger(CompanyController.class);
 	
 	@Autowired
-	private HolidayService holidayService;
+	private CompanyService companyService;
 	
 	@GetMapping
-	public List<Holiday> findAll()
+	public List<Company> findAll()
 	{
-		return holidayService.findAll();
+		return companyService.findAll();
 	}
 	
 	@GetMapping(path = "/{id}")
-	public Holiday getHolidayById(@PathVariable Long id) 
+	public Company getCompanyById(@PathVariable Long id) 
 	{
-		Holiday holiday = holidayService.findHolidayById(id);
-		if (holiday == null)
+		Company company = companyService.findCompanyById(id);
+		if (company == null)
 		{
 			throw new BaseEntityNotFoundException("id-" + id);
 		}
-		return holiday;
+		return company;
 	}
 	
 	@PostMapping
-	public Holiday saveHoliday(@Valid @RequestBody Holiday holiday) 
+	public Company saveCompany(@Valid @RequestBody Company company) 
 	{
-		return holidayService.saveHoliday(holiday);
+		return companyService.saveCompany(company);
 	}
 	
 	@PutMapping
-	public void updateHoliday(@Valid @RequestBody Holiday holiday) 
+	public void updateCompany(@Valid @RequestBody Company company) 
 	{
-		holidayService.saveHoliday(holiday);
+		companyService.saveCompany(company);
 	}
 
 	@DeleteMapping("/{id}")
-	public void deleteHoliday(@PathVariable Long id) 
+	public void deleteCompany(@PathVariable Long id) 
 	{
-		holidayService.deleteHoliday(id);
+		companyService.deleteCompany(id);
 	}
 }

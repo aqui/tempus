@@ -16,51 +16,51 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import in.batur.tempus.entity.Holiday;
-import in.batur.tempus.service.HolidayService;
+import in.batur.tempus.entity.CodeTable;
+import in.batur.tempus.service.CodeTableService;
 import in.batur.tempus.web.exception.BaseEntityNotFoundException;
 
 @RestController
-@RequestMapping(value = "/api/holiday")
-public class HolidayController 
+@RequestMapping(value = "/api/codetable")
+public class CodeTableController 
 {
-	Logger logger = LoggerFactory.getLogger(HolidayController.class);
+Logger logger = LoggerFactory.getLogger(CodeTableController.class);
 	
 	@Autowired
-	private HolidayService holidayService;
+	private CodeTableService codeTableService;
 	
 	@GetMapping
-	public List<Holiday> findAll()
+	public List<CodeTable> findAll()
 	{
-		return holidayService.findAll();
+		return codeTableService.findAll();
 	}
 	
 	@GetMapping(path = "/{id}")
-	public Holiday getHolidayById(@PathVariable Long id) 
+	public CodeTable getCodeTableById(@PathVariable Long id) 
 	{
-		Holiday holiday = holidayService.findHolidayById(id);
-		if (holiday == null)
+		CodeTable codeTable = codeTableService.findCodeTableById(id);
+		if (codeTable == null)
 		{
 			throw new BaseEntityNotFoundException("id-" + id);
 		}
-		return holiday;
+		return codeTable;
 	}
 	
 	@PostMapping
-	public Holiday saveHoliday(@Valid @RequestBody Holiday holiday) 
+	public CodeTable saveCodeTable(@Valid @RequestBody CodeTable codeTable) 
 	{
-		return holidayService.saveHoliday(holiday);
+		return codeTableService.saveCodeTable(codeTable);
 	}
 	
 	@PutMapping
-	public void updateHoliday(@Valid @RequestBody Holiday holiday) 
+	public void updateCodeTable(@Valid @RequestBody CodeTable codeTable) 
 	{
-		holidayService.saveHoliday(holiday);
+		codeTableService.saveCodeTable(codeTable);
 	}
 
 	@DeleteMapping("/{id}")
-	public void deleteHoliday(@PathVariable Long id) 
+	public void deleteCodeTable(@PathVariable Long id) 
 	{
-		holidayService.deleteHoliday(id);
+		codeTableService.deleteCodeTable(id);
 	}
 }

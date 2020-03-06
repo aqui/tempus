@@ -16,51 +16,51 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import in.batur.tempus.entity.Holiday;
-import in.batur.tempus.service.HolidayService;
+import in.batur.tempus.entity.SvaaOption;
+import in.batur.tempus.service.SvaaOptionService;
 import in.batur.tempus.web.exception.BaseEntityNotFoundException;
 
 @RestController
-@RequestMapping(value = "/api/holiday")
-public class HolidayController 
+@RequestMapping(value = "/api/svaaoption")
+public class SvaaOptionController 
 {
-	Logger logger = LoggerFactory.getLogger(HolidayController.class);
+Logger logger = LoggerFactory.getLogger(SvaaOptionController.class);
 	
 	@Autowired
-	private HolidayService holidayService;
+	private SvaaOptionService svaaOptionService;
 	
 	@GetMapping
-	public List<Holiday> findAll()
+	public List<SvaaOption> findAll()
 	{
-		return holidayService.findAll();
+		return svaaOptionService.findAll();
 	}
 	
 	@GetMapping(path = "/{id}")
-	public Holiday getHolidayById(@PathVariable Long id) 
+	public SvaaOption getSvaaOptionById(@PathVariable Long id) 
 	{
-		Holiday holiday = holidayService.findHolidayById(id);
-		if (holiday == null)
+		SvaaOption svaaOption = svaaOptionService.findSvaaOptionById(id);
+		if (svaaOption == null)
 		{
 			throw new BaseEntityNotFoundException("id-" + id);
 		}
-		return holiday;
+		return svaaOption;
 	}
 	
 	@PostMapping
-	public Holiday saveHoliday(@Valid @RequestBody Holiday holiday) 
+	public SvaaOption saveSvaaOption(@Valid @RequestBody SvaaOption svaaOption) 
 	{
-		return holidayService.saveHoliday(holiday);
+		return svaaOptionService.saveSvaaOption(svaaOption);
 	}
 	
 	@PutMapping
-	public void updateHoliday(@Valid @RequestBody Holiday holiday) 
+	public void updateSvaaOption(@Valid @RequestBody SvaaOption svaaOption) 
 	{
-		holidayService.saveHoliday(holiday);
+		svaaOptionService.saveSvaaOption(svaaOption);
 	}
 
 	@DeleteMapping("/{id}")
-	public void deleteHoliday(@PathVariable Long id) 
+	public void deleteSvaaOption(@PathVariable Long id) 
 	{
-		holidayService.deleteHoliday(id);
+		svaaOptionService.deleteSvaaOption(id);
 	}
 }
