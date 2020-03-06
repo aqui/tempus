@@ -1,4 +1,4 @@
-package in.batur.tempus.web.resource.api;
+package in.batur.tempus.web.controller;
 
 import java.io.IOException;
 
