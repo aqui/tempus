@@ -27,11 +27,11 @@ public abstract class BaseEntity
 	@Column(name = "OPTLOCK", nullable=false)
 	public Long version;
 
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
     @Column(name = "CREATE_DATE", updatable=false)
     private Date created;
 
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
     @Column(name = "LAST_UPDATE_DATE")
     private Date updated;
 
