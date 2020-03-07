@@ -46,16 +46,16 @@ Logger logger = LoggerFactory.getLogger(ProtectionController.class);
 		return protection;
 	}
 	
-	@PostMapping
+	@PostMapping("/")
 	public Protection saveProtection(@Valid @RequestBody Protection protection) 
 	{
 		return protectionService.saveProtection(protection);
 	}
 	
-	@PutMapping
-	public void updateProtection(@Valid @RequestBody Protection protection) 
+	@PutMapping("/")
+	public Protection updateProtection(@Valid @RequestBody Protection protection) 
 	{
-		protectionService.saveProtection(protection);
+		return protectionService.saveProtection(protection);
 	}
 
 	@DeleteMapping("/{id}")

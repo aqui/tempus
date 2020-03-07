@@ -24,7 +24,7 @@ import in.batur.tempus.web.exception.BaseEntityNotFoundException;
 @RequestMapping(value = "/api/equipment")
 public class EquipmentController 
 {
-Logger logger = LoggerFactory.getLogger(EquipmentController.class);
+	Logger logger = LoggerFactory.getLogger(EquipmentController.class);
 	
 	@Autowired
 	private EquipmentService equipmentService;
@@ -46,16 +46,16 @@ Logger logger = LoggerFactory.getLogger(EquipmentController.class);
 		return equipment;
 	}
 	
-	@PostMapping
+	@PostMapping("/")
 	public Equipment saveEquipment(@Valid @RequestBody Equipment equipment) 
 	{
 		return equipmentService.saveEquipment(equipment);
 	}
 	
-	@PutMapping
-	public void updateEquipment(@Valid @RequestBody Equipment equipment) 
+	@PutMapping("/")
+	public Equipment updateEquipment(@Valid @RequestBody Equipment equipment) 
 	{
-		equipmentService.saveEquipment(equipment);
+		return equipmentService.saveEquipment(equipment);
 	}
 
 	@DeleteMapping("/{id}")

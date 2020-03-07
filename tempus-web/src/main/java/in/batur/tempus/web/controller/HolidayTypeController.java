@@ -46,16 +46,16 @@ Logger logger = LoggerFactory.getLogger(HolidayTypeController.class);
 		return holidayType;
 	}
 	
-	@PostMapping
+	@PostMapping("/")
 	public HolidayType saveHolidayType(@Valid @RequestBody HolidayType holidayType) 
 	{
 		return holidayTypeService.saveHolidayType(holidayType);
 	}
 	
-	@PutMapping
-	public void updateHolidayType(@Valid @RequestBody HolidayType holidayType) 
+	@PutMapping("/")
+	public HolidayType updateHolidayType(@Valid @RequestBody HolidayType holidayType) 
 	{
-		holidayTypeService.saveHolidayType(holidayType);
+		return holidayTypeService.saveHolidayType(holidayType);
 	}
 
 	@DeleteMapping("/{id}")

@@ -46,16 +46,16 @@ Logger logger = LoggerFactory.getLogger(RoleController.class);
 		return role;
 	}
 	
-	@PostMapping
+	@PostMapping("/")
 	public Role saveRole(@Valid @RequestBody Role role) 
 	{
 		return roleService.saveRole(role);
 	}
 	
-	@PutMapping
-	public void updateRole(@Valid @RequestBody Role role) 
+	@PutMapping("/")
+	public Role updateRole(@Valid @RequestBody Role role) 
 	{
-		roleService.saveRole(role);
+		return roleService.saveRole(role);
 	}
 
 	@DeleteMapping("/{id}")

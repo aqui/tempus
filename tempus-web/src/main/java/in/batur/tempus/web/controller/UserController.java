@@ -46,16 +46,16 @@ Logger logger = LoggerFactory.getLogger(UserController.class);
 		return user;
 	}
 	
-	@PostMapping
+	@PostMapping("/")
 	public User saveUser(@Valid @RequestBody User user) 
 	{
 		return userService.saveUser(user);
 	}
 	
-	@PutMapping
-	public void updateUser(@Valid @RequestBody User user) 
+	@PutMapping("/")
+	public User updateUser(@Valid @RequestBody User user) 
 	{
-		userService.saveUser(user);
+		return userService.saveUser(user);
 	}
 
 	@DeleteMapping("/{id}")

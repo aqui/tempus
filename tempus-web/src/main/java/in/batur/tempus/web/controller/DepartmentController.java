@@ -46,16 +46,16 @@ Logger logger = LoggerFactory.getLogger(DepartmentController.class);
 		return holiday;
 	}
 	
-	@PostMapping
+	@PostMapping("/")
 	public Department saveDepartment(@Valid @RequestBody Department holiday) 
 	{
 		return holidayService.saveDepartment(holiday);
 	}
 	
-	@PutMapping
-	public void updateDepartment(@Valid @RequestBody Department holiday) 
+	@PutMapping("/")
+	public Department updateDepartment(@Valid @RequestBody Department holiday) 
 	{
-		holidayService.saveDepartment(holiday);
+		return holidayService.saveDepartment(holiday);
 	}
 
 	@DeleteMapping("/{id}")

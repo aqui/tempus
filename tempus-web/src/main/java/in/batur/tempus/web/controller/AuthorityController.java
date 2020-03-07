@@ -46,16 +46,16 @@ Logger logger = LoggerFactory.getLogger(AuthorityController.class);
 		return authority;
 	}
 	
-	@PostMapping
+	@PostMapping("/")
 	public Authority saveAuthority(@Valid @RequestBody Authority authority) 
 	{
 		return authorityService.saveAuthority(authority);
 	}
 	
-	@PutMapping
-	public void updateAuthority(@Valid @RequestBody Authority authority) 
+	@PutMapping("/")
+	public Authority updateAuthority(@Valid @RequestBody Authority authority) 
 	{
-		authorityService.saveAuthority(authority);
+		return authorityService.saveAuthority(authority);
 	}
 
 	@DeleteMapping("/{id}")

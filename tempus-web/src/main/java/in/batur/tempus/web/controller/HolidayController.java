@@ -46,16 +46,16 @@ public class HolidayController
 		return holiday;
 	}
 	
-	@PostMapping
+	@PostMapping("/")
 	public Holiday saveHoliday(@Valid @RequestBody Holiday holiday) 
 	{
 		return holidayService.saveHoliday(holiday);
 	}
 	
-	@PutMapping
-	public void updateHoliday(@Valid @RequestBody Holiday holiday) 
+	@PutMapping("/")
+	public Holiday updateHoliday(@Valid @RequestBody Holiday holiday) 
 	{
-		holidayService.saveHoliday(holiday);
+		return holidayService.saveHoliday(holiday);
 	}
 
 	@DeleteMapping("/{id}")

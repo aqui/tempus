@@ -46,16 +46,16 @@ Logger logger = LoggerFactory.getLogger(OperationTypeController.class);
 		return operationType;
 	}
 	
-	@PostMapping
+	@PostMapping("/")
 	public OperationType saveOperationType(@Valid @RequestBody OperationType operationType) 
 	{
 		return operationTypeService.saveOperationType(operationType);
 	}
 	
-	@PutMapping
-	public void updateOperationType(@Valid @RequestBody OperationType operationType) 
+	@PutMapping("/")
+	public OperationType updateOperationType(@Valid @RequestBody OperationType operationType) 
 	{
-		operationTypeService.saveOperationType(operationType);
+		return operationTypeService.saveOperationType(operationType);
 	}
 
 	@DeleteMapping("/{id}")

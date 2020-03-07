@@ -46,16 +46,16 @@ Logger logger = LoggerFactory.getLogger(DutyController.class);
 		return duty;
 	}
 	
-	@PostMapping
+	@PostMapping("/")
 	public Duty saveDuty(@Valid @RequestBody Duty duty) 
 	{
 		return dutyService.saveDuty(duty);
 	}
 	
-	@PutMapping
-	public void updateDuty(@Valid @RequestBody Duty duty) 
+	@PutMapping("/")
+	public Duty updateDuty(@Valid @RequestBody Duty duty) 
 	{
-		dutyService.saveDuty(duty);
+		return dutyService.saveDuty(duty);
 	}
 
 	@DeleteMapping("/{id}")

@@ -46,16 +46,16 @@ Logger logger = LoggerFactory.getLogger(OperationStepController.class);
 		return operationStep;
 	}
 	
-	@PostMapping
+	@PostMapping("/")
 	public OperationStep saveOperationStep(@Valid @RequestBody OperationStep operationStep) 
 	{
 		return operationStepService.saveOperationStep(operationStep);
 	}
 	
-	@PutMapping
-	public void updateOperationStep(@Valid @RequestBody OperationStep operationStep) 
+	@PutMapping("/")
+	public OperationStep updateOperationStep(@Valid @RequestBody OperationStep operationStep) 
 	{
-		operationStepService.saveOperationStep(operationStep);
+		return operationStepService.saveOperationStep(operationStep);
 	}
 
 	@DeleteMapping("/{id}")

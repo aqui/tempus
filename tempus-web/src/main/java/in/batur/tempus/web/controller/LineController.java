@@ -46,16 +46,16 @@ Logger logger = LoggerFactory.getLogger(LineController.class);
 		return line;
 	}
 	
-	@PostMapping
+	@PostMapping("/")
 	public Line saveLine(@Valid @RequestBody Line line) 
 	{
 		return lineService.saveLine(line);
 	}
 	
-	@PutMapping
-	public void updateLine(@Valid @RequestBody Line line) 
+	@PutMapping("/")
+	public Line updateLine(@Valid @RequestBody Line line) 
 	{
-		lineService.saveLine(line);
+		return lineService.saveLine(line);
 	}
 
 	@DeleteMapping("/{id}")

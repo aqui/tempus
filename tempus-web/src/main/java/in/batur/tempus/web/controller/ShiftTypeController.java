@@ -46,16 +46,16 @@ Logger logger = LoggerFactory.getLogger(ShiftTypeController.class);
 		return shiftType;
 	}
 	
-	@PostMapping
+	@PostMapping("/")
 	public ShiftType saveShiftType(@Valid @RequestBody ShiftType shiftType) 
 	{
 		return shiftTypeService.saveShiftType(shiftType);
 	}
 	
-	@PutMapping
-	public void updateShiftType(@Valid @RequestBody ShiftType shiftType) 
+	@PutMapping("/")
+	public ShiftType updateShiftType(@Valid @RequestBody ShiftType shiftType) 
 	{
-		shiftTypeService.saveShiftType(shiftType);
+		return shiftTypeService.saveShiftType(shiftType);
 	}
 
 	@DeleteMapping("/{id}")

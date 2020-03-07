@@ -46,16 +46,16 @@ Logger logger = LoggerFactory.getLogger(EmployeeController.class);
 		return employee;
 	}
 	
-	@PostMapping
+	@PostMapping("/")
 	public Employee saveEmployee(@Valid @RequestBody Employee employee) 
 	{
 		return employeeService.saveEmployee(employee);
 	}
 	
-	@PutMapping
-	public void updateEmployee(@Valid @RequestBody Employee employee) 
+	@PutMapping("/")
+	public Employee updateEmployee(@Valid @RequestBody Employee employee) 
 	{
-		employeeService.saveEmployee(employee);
+		return employeeService.saveEmployee(employee);
 	}
 
 	@DeleteMapping("/{id}")

@@ -46,16 +46,16 @@ Logger logger = LoggerFactory.getLogger(SvaaOptionController.class);
 		return svaaOption;
 	}
 	
-	@PostMapping
+	@PostMapping("/")
 	public SvaaOption saveSvaaOption(@Valid @RequestBody SvaaOption svaaOption) 
 	{
 		return svaaOptionService.saveSvaaOption(svaaOption);
 	}
 	
-	@PutMapping
-	public void updateSvaaOption(@Valid @RequestBody SvaaOption svaaOption) 
+	@PutMapping("/")
+	public SvaaOption updateSvaaOption(@Valid @RequestBody SvaaOption svaaOption) 
 	{
-		svaaOptionService.saveSvaaOption(svaaOption);
+		return svaaOptionService.saveSvaaOption(svaaOption);
 	}
 
 	@DeleteMapping("/{id}")

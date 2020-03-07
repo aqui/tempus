@@ -46,16 +46,16 @@ Logger logger = LoggerFactory.getLogger(ShiftController.class);
 		return shift;
 	}
 	
-	@PostMapping
+	@PostMapping("/")
 	public Shift saveShift(@Valid @RequestBody Shift shift) 
 	{
 		return shiftService.saveShift(shift);
 	}
 	
-	@PutMapping
-	public void updateShift(@Valid @RequestBody Shift shift) 
+	@PutMapping("/")
+	public Shift updateShift(@Valid @RequestBody Shift shift) 
 	{
-		shiftService.saveShift(shift);
+		return shiftService.saveShift(shift);
 	}
 
 	@DeleteMapping("/{id}")

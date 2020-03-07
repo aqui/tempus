@@ -46,16 +46,16 @@ Logger logger = LoggerFactory.getLogger(ProductFamilyController.class);
 		return productFamily;
 	}
 	
-	@PostMapping
+	@PostMapping("/")
 	public ProductFamily saveProductFamily(@Valid @RequestBody ProductFamily productFamily) 
 	{
 		return productFamilyService.saveProductFamily(productFamily);
 	}
 	
-	@PutMapping
-	public void updateProductFamily(@Valid @RequestBody ProductFamily productFamily) 
+	@PutMapping("/")
+	public ProductFamily updateProductFamily(@Valid @RequestBody ProductFamily productFamily) 
 	{
-		productFamilyService.saveProductFamily(productFamily);
+		return productFamilyService.saveProductFamily(productFamily);
 	}
 
 	@DeleteMapping("/{id}")

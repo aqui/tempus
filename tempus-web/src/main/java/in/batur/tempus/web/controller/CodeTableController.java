@@ -46,16 +46,16 @@ Logger logger = LoggerFactory.getLogger(CodeTableController.class);
 		return codeTable;
 	}
 	
-	@PostMapping
+	@PostMapping("/")
 	public CodeTable saveCodeTable(@Valid @RequestBody CodeTable codeTable) 
 	{
 		return codeTableService.saveCodeTable(codeTable);
 	}
 	
-	@PutMapping
-	public void updateCodeTable(@Valid @RequestBody CodeTable codeTable) 
+	@PutMapping("/")
+	public CodeTable updateCodeTable(@Valid @RequestBody CodeTable codeTable) 
 	{
-		codeTableService.saveCodeTable(codeTable);
+		return codeTableService.saveCodeTable(codeTable);
 	}
 
 	@DeleteMapping("/{id}")

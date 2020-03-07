@@ -46,16 +46,16 @@ Logger logger = LoggerFactory.getLogger(NvaaOptionController.class);
 		return holiday;
 	}
 	
-	@PostMapping
+	@PostMapping("/")
 	public NvaaOption saveNvaaOption(@Valid @RequestBody NvaaOption holiday) 
 	{
 		return holidayService.saveNvaaOption(holiday);
 	}
 	
-	@PutMapping
-	public void updateNvaaOption(@Valid @RequestBody NvaaOption holiday) 
+	@PutMapping("/")
+	public NvaaOption updateNvaaOption(@Valid @RequestBody NvaaOption holiday) 
 	{
-		holidayService.saveNvaaOption(holiday);
+		return holidayService.saveNvaaOption(holiday);
 	}
 
 	@DeleteMapping("/{id}")

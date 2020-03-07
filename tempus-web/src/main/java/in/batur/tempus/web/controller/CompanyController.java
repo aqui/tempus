@@ -46,16 +46,16 @@ Logger logger = LoggerFactory.getLogger(CompanyController.class);
 		return company;
 	}
 	
-	@PostMapping
+	@PostMapping("/")
 	public Company saveCompany(@Valid @RequestBody Company company) 
 	{
 		return companyService.saveCompany(company);
 	}
 	
-	@PutMapping
-	public void updateCompany(@Valid @RequestBody Company company) 
+	@PutMapping("/")
+	public Company updateCompany(@Valid @RequestBody Company company) 
 	{
-		companyService.saveCompany(company);
+		return companyService.saveCompany(company);
 	}
 
 	@DeleteMapping("/{id}")

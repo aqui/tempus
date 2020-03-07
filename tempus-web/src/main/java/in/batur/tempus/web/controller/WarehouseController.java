@@ -46,16 +46,16 @@ Logger logger = LoggerFactory.getLogger(WarehouseController.class);
 		return warehouse;
 	}
 	
-	@PostMapping
+	@PostMapping("/")
 	public Warehouse saveWarehouse(@Valid @RequestBody Warehouse warehouse) 
 	{
 		return warehouseService.saveWarehouse(warehouse);
 	}
 	
-	@PutMapping
-	public void updateWarehouse(@Valid @RequestBody Warehouse warehouse) 
+	@PutMapping("/")
+	public Warehouse updateWarehouse(@Valid @RequestBody Warehouse warehouse) 
 	{
-		warehouseService.saveWarehouse(warehouse);
+		return warehouseService.saveWarehouse(warehouse);
 	}
 
 	@DeleteMapping("/{id}")

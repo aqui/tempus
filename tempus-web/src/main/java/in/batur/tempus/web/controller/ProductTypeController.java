@@ -46,16 +46,16 @@ Logger logger = LoggerFactory.getLogger(ProductTypeController.class);
 		return productType;
 	}
 	
-	@PostMapping
+	@PostMapping("/")
 	public ProductType saveProductType(@Valid @RequestBody ProductType productType) 
 	{
 		return productTypeService.saveProductType(productType);
 	}
 	
-	@PutMapping
-	public void updateProductType(@Valid @RequestBody ProductType productType) 
+	@PutMapping("/")
+	public ProductType updateProductType(@Valid @RequestBody ProductType productType) 
 	{
-		productTypeService.saveProductType(productType);
+		return productTypeService.saveProductType(productType);
 	}
 
 	@DeleteMapping("/{id}")

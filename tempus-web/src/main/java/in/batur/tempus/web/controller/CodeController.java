@@ -46,16 +46,16 @@ Logger logger = LoggerFactory.getLogger(CodeController.class);
 		return code;
 	}
 	
-	@PostMapping
+	@PostMapping("/")
 	public Code saveCode(@Valid @RequestBody Code code) 
 	{
 		return codeService.saveCode(code);
 	}
 	
-	@PutMapping
-	public void updateCode(@Valid @RequestBody Code code) 
+	@PutMapping("/")
+	public Code updateCode(@Valid @RequestBody Code code) 
 	{
-		codeService.saveCode(code);
+		return codeService.saveCode(code);
 	}
 
 	@DeleteMapping("/{id}")

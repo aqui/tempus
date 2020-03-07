@@ -46,16 +46,16 @@ Logger logger = LoggerFactory.getLogger(PartController.class);
 		return part;
 	}
 	
-	@PostMapping
+	@PostMapping("/")
 	public Part savePart(@Valid @RequestBody Part part) 
 	{
 		return partService.savePart(part);
 	}
 	
-	@PutMapping
-	public void updatePart(@Valid @RequestBody Part part) 
+	@PutMapping("/")
+	public Part updatePart(@Valid @RequestBody Part part) 
 	{
-		partService.savePart(part);
+		return partService.savePart(part);
 	}
 
 	@DeleteMapping("/{id}")

@@ -46,16 +46,16 @@ Logger logger = LoggerFactory.getLogger(StationController.class);
 		return station;
 	}
 	
-	@PostMapping
+	@PostMapping("/")
 	public Station saveStation(@Valid @RequestBody Station station) 
 	{
 		return stationService.saveStation(station);
 	}
 	
-	@PutMapping
-	public void updateStation(@Valid @RequestBody Station station) 
+	@PutMapping("/")
+	public Station updateStation(@Valid @RequestBody Station station) 
 	{
-		stationService.saveStation(station);
+		return stationService.saveStation(station);
 	}
 
 	@DeleteMapping("/{id}")

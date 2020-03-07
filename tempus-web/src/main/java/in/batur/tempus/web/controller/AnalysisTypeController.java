@@ -46,16 +46,16 @@ Logger logger = LoggerFactory.getLogger(AnalysisTypeController.class);
 		return analysisType;
 	}
 	
-	@PostMapping
+	@PostMapping("/")
 	public AnalysisType saveAnalysisType(@Valid @RequestBody AnalysisType analysisType) 
 	{
 		return analysisTypeService.saveAnalysisType(analysisType);
 	}
 	
-	@PutMapping
-	public void updateAnalysisType(@Valid @RequestBody AnalysisType analysisType) 
+	@PutMapping("/")
+	public AnalysisType updateAnalysisType(@Valid @RequestBody AnalysisType analysisType) 
 	{
-		analysisTypeService.saveAnalysisType(analysisType);
+		return analysisTypeService.saveAnalysisType(analysisType);
 	}
 
 	@DeleteMapping("/{id}")

@@ -46,16 +46,16 @@ Logger logger = LoggerFactory.getLogger(OperationController.class);
 		return holiday;
 	}
 	
-	@PostMapping
+	@PostMapping("/")
 	public Operation saveOperation(@Valid @RequestBody Operation holiday) 
 	{
 		return holidayService.saveOperation(holiday);
 	}
 	
-	@PutMapping
-	public void updateOperation(@Valid @RequestBody Operation holiday) 
+	@PutMapping("/")
+	public Operation updateOperation(@Valid @RequestBody Operation holiday) 
 	{
-		holidayService.saveOperation(holiday);
+		return holidayService.saveOperation(holiday);
 	}
 
 	@DeleteMapping("/{id}")

@@ -46,16 +46,16 @@ Logger logger = LoggerFactory.getLogger(WorkTypeController.class);
 		return workType;
 	}
 	
-	@PostMapping
+	@PostMapping("/")
 	public WorkType saveWorkType(@Valid @RequestBody WorkType workType) 
 	{
 		return workTypeService.saveWorkType(workType);
 	}
 	
-	@PutMapping
-	public void updateWorkType(@Valid @RequestBody WorkType workType) 
+	@PutMapping("/")
+	public WorkType updateWorkType(@Valid @RequestBody WorkType workType) 
 	{
-		workTypeService.saveWorkType(workType);
+		return workTypeService.saveWorkType(workType);
 	}
 
 	@DeleteMapping("/{id}")

@@ -46,16 +46,16 @@ Logger logger = LoggerFactory.getLogger(WorkHourController.class);
 		return workHour;
 	}
 	
-	@PostMapping
+	@PostMapping("/")
 	public WorkHour saveWorkHour(@Valid @RequestBody WorkHour workHour) 
 	{
 		return workHourService.saveWorkHour(workHour);
 	}
 	
-	@PutMapping
-	public void updateWorkHour(@Valid @RequestBody WorkHour workHour) 
+	@PutMapping("/")
+	public WorkHour updateWorkHour(@Valid @RequestBody WorkHour workHour) 
 	{
-		workHourService.saveWorkHour(workHour);
+		return workHourService.saveWorkHour(workHour);
 	}
 
 	@DeleteMapping("/{id}")
