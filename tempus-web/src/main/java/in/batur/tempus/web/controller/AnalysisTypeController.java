@@ -24,7 +24,7 @@ import in.batur.tempus.web.exception.BaseEntityNotFoundException;
 @RequestMapping(value = "/api/analysistype")
 public class AnalysisTypeController 
 {
-Logger logger = LoggerFactory.getLogger(AnalysisTypeController.class);
+	Logger logger = LoggerFactory.getLogger(AnalysisTypeController.class);
 	
 	@Autowired
 	private AnalysisTypeService analysisTypeService;
