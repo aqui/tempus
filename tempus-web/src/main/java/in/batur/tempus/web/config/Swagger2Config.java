@@ -28,7 +28,7 @@ public class Swagger2Config
     {
         return new ApiInfoBuilder().title("Tempus REST API")
             .description("Tempus REST API")
-            .contact(new Contact("Akif Batur", "www.bilisim.com.tr", "akifbatur@bilisim.com.tr"))
+            .contact(new Contact("Akif Batur", "batur.in", "akifbatur@protonmail.com"))
             .version("1.0.0")
             .build();
     }
